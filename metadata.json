@@ -1,0 +1,6 @@
+{
+  "name": "BrainCache",
+  "description": "Your second memory. Save notes, voice transcripts, and screenshots, and recall them with plain-language search powered by Gemini.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

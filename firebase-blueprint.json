@@ -1,0 +1,106 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user ID matching auth.uid"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Account creation timestamp"
+        },
+        "lastLoginAt": {
+          "type": "number",
+          "description": "Last login timestamp"
+        }
+      },
+      "required": ["id", "email", "createdAt"]
+    },
+    "Memory": {
+      "title": "Memory",
+      "description": "Stored user memory or file document",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique memory item ID"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "type": {
+          "type": "string",
+          "description": "Memory category (screenshot, pdf, note, etc)"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the memory"
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description or summary"
+        },
+        "originalText": {
+          "type": "string",
+          "description": "Extracted or written text content"
+        },
+        "fileName": {
+          "type": "string",
+          "description": "Original file name"
+        },
+        "fileType": {
+          "type": "string",
+          "description": "MIME type or file extension"
+        },
+        "fileSize": {
+          "type": "string",
+          "description": "Human readable file size"
+        },
+        "fileDataUrl": {
+          "type": "string",
+          "description": "Base64 data url for file"
+        },
+        "imageBase64": {
+          "type": "string",
+          "description": "Thumbnail or image data"
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Upload timestamp"
+        },
+        "isPrivate": {
+          "type": "boolean",
+          "description": "Flag indicating private document (zero AI)"
+        },
+        "password": {
+          "type": "string",
+          "description": "Optional access password"
+        }
+      },
+      "required": ["id", "userId", "type", "title", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/users/{userId}/memories/{memoryId}": {
+      "schema": "Memory",
+      "description": "User uploaded memories and files"
+    }
+  }
+}
